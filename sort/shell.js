@@ -26,7 +26,7 @@ function sort(list) {
 
 }
 
-var arr = require('./arr').create(100000)
+var arr = require('./arr').create(100000);
 console.time('xxx');
 sort(arr);
 console.timeEnd('xxx');

@@ -8,30 +8,30 @@
 5.将基准数填到空坑
 */
 function sort(s, l, r) {
-    if (l < r) {
-        var i = l;
-        var j = r;
-        var x = s[l];
+    if(l >= r) return ;
+    
+    var i = l;
+    var j = r;
+    var x = s[l];
 
-        while (i < j) {
-            while (i < j && s[j] >= x) // 从右向左找第一个小于x的数  
-                j--;
- 
-            if (i < j)
-                s[i++] = s[j]; // => s[i] = s[j]; i ++;
+    while (i < j) {
+        while (i < j && s[j] >= x) // 从右向左找第一个小于x的数  
+            j--;
 
-            while (i < j && s[i] <= x) // 从左向右找第一个大于等于x的数  
-                i++;
+        if (i < j)
+            s[i++] = s[j]; // => s[i] = s[j]; i ++;
 
-            if (i < j)
-                s[j--] = s[i];
-        }
+        while (i < j && s[i] <= x) // 从左向右找第一个大于等于x的数  
+            i++;
 
-        s[i] = x;
-
-        sort(s, l, i - 1); // 递归调用   
-        sort(s, i + 1, r);
+        if (i < j)
+            s[j--] = s[i];
     }
+
+    s[i] = x;
+
+    sort(s, l, i - 1); // 递归调用   
+    sort(s, i + 1, r);
 }
 
 
